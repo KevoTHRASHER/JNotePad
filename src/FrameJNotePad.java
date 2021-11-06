@@ -6,6 +6,7 @@ public class FrameJNotePad extends JFrame {
 
 	public FrameJNotePad() {
 
+		PanelJNotePad objPanelJNotePad = new PanelJNotePad();
 		this.setLayout(null);
 		this.getContentPane().setBackground(Color.BLACK);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
