@@ -127,22 +127,39 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 		if(ae.getSource() == menuItemOpen) {
 			JFileChooser objFileChooser = new JFileChooser();
 			objFileChooser.setCurrentDirectory(new File("."));
-			objFileChooser.showOpenDialog(this);
+			//objFileChooser.showOpenDialog(this);
 
 			int responseOpenDialog = objFileChooser.showOpenDialog(textArea);
-			
-			if(responseOpenDialog == JFileChooser.APPROVE_OPTION) {
+
+			try {
+				if(responseOpenDialog == JFileChooser.APPROVE_OPTION) {
 				System.out.println(JFileChooser.APPROVE_OPTION);
 				File objFile = new File(objFileChooser.getSelectedFile().getAbsolutePath());
 				System.out.println(objFile);
 				//String textFileToString = Files.readString(objFileChooser.getSelectedFile().getAbsolutePath());
 
+				}
+			} catch(Exception e) {
+				JOptionPane.showMessageDialog(this,e,"EXCPTION",JOptionPane.WARNING_MESSAGE);
 			}
+
 		}
 
 		if(ae.getSource() == menuItemSave) {
 			JFileChooser objFileChooser = new JFileChooser();
-			objFileChooser.showSaveDialog(textArea);
+			objFileChooser.setCurrentDirectory(new File("."));
+			//objFileChooser.showSaveDialog(textArea);
+			int responseSaveDialog = objFileChooser.showSaveDialog(textArea);
+
+			try {
+				if(responseSaveDialog == JFileChooser.APPROVE_OPTION) {
+					File objFile = new File(objFileChooser.getSelectedFile().getAbsolutePath());
+					System.out.println(objFile);
+				}
+
+			} catch(Exception e) {
+				JOptionPane.showMessageDialog(this,e,"EXCPTION",JOptionPane.WARNING_MESSAGE);
+			}
 		}
 
 		if(ae.getSource() == menuItemExit) {
