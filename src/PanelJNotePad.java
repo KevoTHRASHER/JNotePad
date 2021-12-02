@@ -148,7 +148,6 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 		if(ae.getSource() == menuItemSave) {
 			JFileChooser objFileChooser = new JFileChooser();
 			objFileChooser.setCurrentDirectory(new File("."));
-			//objFileChooser.showSaveDialog(textArea);
 			int responseSaveDialog = objFileChooser.showSaveDialog(textArea);
 
 			try {
@@ -163,8 +162,12 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 		}
 
 		if(ae.getSource() == menuItemExit) {
-			if (JOptionPane.showConfirmDialog(this,"Do you want to EXIT?","EXIT JNotePad",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+			try {
+				if (JOptionPane.showConfirmDialog(this,"Do you want to EXIT?","EXIT JNotePad",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
 				System.exit(0);
+				}
+			} catch(Exception e) {
+				JOptionPane.showMessageDialog(this,e,"EXCPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
