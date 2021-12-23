@@ -8,13 +8,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
+import javax.swing.KeyStroke;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
-import java.io.File;
 import java.awt.Dimension;
-import java.net.URL;
+import java.io.File;
 
 public class PanelJNotePad extends JPanel implements ActionListener {
 
@@ -36,31 +37,40 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 
 		menuFile = new JMenu("File");
 		menuFile.setForeground(Color.GREEN);
+		menuFile.setMnemonic(KeyEvent.VK_F);
 		menuBar.add(menuFile);
 
 		menuEdit = new JMenu("Edit");
 		menuEdit.setForeground(Color.GREEN);
+		menuEdit.setMnemonic(KeyEvent.VK_E);
 		menuBar.add(menuEdit);
 
 		menuHelp = new JMenu("Help");
 		menuHelp.setForeground(Color.GREEN);
+		menuHelp.setMnemonic(KeyEvent.VK_H);
 		menuBar.add(menuHelp);
 
 		menuItemNew = new JMenuItem("New");
 		menuItemNew.setBackground(new Color(102,0,153));
 		menuItemNew.setForeground(Color.GREEN);
+		menuItemNew.setMnemonic(KeyEvent.VK_N);
+		menuItemNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		menuItemNew.addActionListener(this);
 		menuFile.add(menuItemNew);
 
 		menuItemOpen = new JMenuItem("Open");
 		menuItemOpen.setBackground(new Color(102,0,153));
 		menuItemOpen.setForeground(Color.GREEN);
+		menuItemOpen.setMnemonic(KeyEvent.VK_O);
+		menuItemOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
 		menuItemOpen.addActionListener(this);
 		menuFile.add(menuItemOpen);
 
 		menuItemSave = new JMenuItem("Save");
 		menuItemSave.setBackground(new Color(102,0,153));
 		menuItemSave.setForeground(Color.GREEN);
+		menuItemSave.setMnemonic(KeyEvent.VK_S);
+		menuItemSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		menuItemSave.addActionListener(this);
 		menuFile.add(menuItemSave);
 
@@ -69,30 +79,37 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 		menuItemExit = new JMenuItem("Exit");
 		menuItemExit.setBackground(new Color(102,0,153));
 		menuItemExit.setForeground(Color.GREEN);
+		menuItemExit.setMnemonic(KeyEvent.VK_Q);
+		menuItemExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0));
 		menuItemExit.addActionListener(this);
 		menuFile.add(menuItemExit);
 
 		menuItemCut = new JMenuItem("Cut");
 		menuItemCut.setBackground(new Color(102,0,153));
 		menuItemCut.setForeground(Color.GREEN);
+		menuItemCut.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
 		menuItemCut.addActionListener(this);
 		menuEdit.add(menuItemCut);
 
 		menuItemCopy = new JMenuItem("Copy");
 		menuItemCopy.setBackground(new Color(102,0,153));
 		menuItemCopy.setForeground(Color.GREEN);
+		menuItemCopy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
 		menuItemCopy.addActionListener(this);
 		menuEdit.add(menuItemCopy);
 
 		menuItemPaste = new JMenuItem("Paste");
 		menuItemPaste.setBackground(new Color(102,0,153));
 		menuItemPaste.setForeground(Color.GREEN);
+		menuItemPaste.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
 		menuItemPaste.addActionListener(this);
 		menuEdit.add(menuItemPaste);
 
 		menuItemAbout = new JMenuItem("About JNotePad");
 		menuItemAbout.setBackground(new Color(102,0,153));
 		menuItemAbout.setForeground(Color.GREEN);
+		menuItemAbout.setMnemonic(KeyEvent.VK_F1);
+		menuItemAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F1, 0));
 		menuItemAbout.addActionListener(this);
 		menuHelp.add(menuItemAbout);
 
@@ -140,7 +157,7 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 
 				}
 			} catch(Exception e) {
-				JOptionPane.showMessageDialog(this,e,"EXCPTION",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 
 		}
