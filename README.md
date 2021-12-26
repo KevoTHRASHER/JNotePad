@@ -1,7 +1,6 @@
 <h1 align="center">JNotePad</h1>
 
-<p align="center">Text Editor write in **JAVA** Language inspired by **Neon Genesis Evangelion
-**</p>
+<p align="center">Text Editor write in __JAVA__ Language inspired by __Neon Genesis Evangelion__</p>
 
 ![alt text](https://raw.githubusercontent.com/KevoTHRASHER/JNotePad/main/img/JNotePad.png?raw=true)
 
