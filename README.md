@@ -1,13 +1,6 @@
-<style>
-h1 {
-	color: purple;
-}
-</style>
+<h1 align="center" style="color: purple">JNotePad</h1>
 
-
-<h1 align="center">JNotePad</h1>
-
-<p align="center">Text Editor write in __JAVA__ Language inspired by __Neon Genesis Evangelion__</p>
+<p align="center">Text Editor write in <span style="color: red">__JAVA__</span> Language inspired by __Neon Genesis Evangelion__</p>
 
 ![alt text](https://raw.githubusercontent.com/KevoTHRASHER/JNotePad/main/img/JNotePad.png?raw=true)
 
