@@ -7,7 +7,10 @@
 
 <h2>Compile & Run</h2>
 
--- Compile
+-- Compile in Terminal
+
 javac *.java
---Run
+
+-- Run in Terminal
+
 java Main
