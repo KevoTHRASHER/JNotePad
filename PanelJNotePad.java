@@ -22,7 +22,7 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 	private static ImageIcon imageAboutAutor;
 	private JMenuBar menuBar;
 	private JMenu menuFile, menuEdit, menuHelp;
-	private JMenuItem menuItemNew, menuItemOpen, menuItemSave, menuItemExit, menuItemCut, menuItemCopy, menuItemPaste, menuItemAbout;
+	private JMenuItem menuItemNew, menuItemOpen, menuItemSave, menuItemPrint, menuItemExit, menuItemCut, menuItemCopy, menuItemPaste, menuItemSelectAll, menuItemAbout;
 	private JTextArea textArea;
 	private JScrollPane scrollPane;
 
@@ -74,6 +74,14 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 		menuItemSave.addActionListener(this);
 		menuFile.add(menuItemSave);
 
+		menuItemPrint = new JMenuItem("Print");
+		menuItemPrint.setBackground(new Color(102,0,153));
+		menuItemPrint.setForeground(Color.GREEN);
+		menuItemPrint.setMnemonic(KeyEvent.VK_P);
+		menuItemPrint.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
+		menuItemPrint.addActionListener(this);
+		menuFile.add(menuItemPrint);
+
 		menuFile.addSeparator();
 
 		menuItemExit = new JMenuItem("Exit");
@@ -104,6 +112,16 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 		menuItemPaste.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
 		menuItemPaste.addActionListener(this);
 		menuEdit.add(menuItemPaste);
+
+		menuEdit.addSeparator();
+
+		menuItemSelectAll = new JMenuItem("Select All");
+		menuItemSelectAll.setBackground(new Color(102,0,153));
+		menuItemSelectAll.setForeground(Color.GREEN);
+		menuItemSelectAll.setMnemonic(KeyEvent.VK_A);
+		menuItemSelectAll.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
+		menuItemSelectAll.addActionListener(this);
+		menuEdit.add(menuItemSelectAll);
 
 		menuItemAbout = new JMenuItem("About JNotePad");
 		menuItemAbout.setBackground(new Color(102,0,153));
@@ -137,8 +155,11 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 
 		if(ae.getSource() == menuItemNew) {
-			textArea.setText("");
-			
+			try {
+				textArea.setText("");
+			} catch(Exception e) {
+				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
+			}
 		}
 
 		if(ae.getSource() == menuItemOpen) {
@@ -154,7 +175,6 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 				File objFile = new File(objFileChooser.getSelectedFile().getAbsolutePath());
 				System.out.println(objFile);
 				//String textFileToString = Files.readString(objFileChooser.getSelectedFile().getAbsolutePath());
-
 				}
 			} catch(Exception e) {
 				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
