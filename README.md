@@ -6,10 +6,10 @@
 
 <h2>Compile & Run</h2>
 
-- Compile in Terminal
+* Compile in Terminal
 
 javac *.java
 
-- Run in Terminal
+* Run in Terminal
 
 java Main
