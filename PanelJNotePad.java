@@ -28,6 +28,7 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 	private JMenuItem menuItemNew, menuItemOpen, menuItemSave, menuItemPrint, menuItemExit, menuItemCut, menuItemCopy, menuItemPaste, menuItemSelectAll, menuItemAbout;
 	private JTextArea textArea;
 	private JScrollPane scrollPane;
+	private String selectText;
 
 	public PanelJNotePad() {
 
@@ -219,12 +220,44 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 			}
 		}
 
+		else if(ae.getSource() == menuItemCut) {
+			try {
+				selectText = textArea.getSelectedText();
+				textArea.replaceRange("", textArea.getSelectionStart(), textArea.getSelectionEnd());
+			} catch(Exception e) {
+
+			}
+		}
+
+		else if(ae.getSource() == menuItemCopy) {
+			try {
+				selectText = textArea.getSelectedText();
+			} catch(Exception e) {
+
+			}
+		}
+
+		else if(ae.getSource() == menuItemPaste) {
+			try {
+				textArea.insert(selectText, textArea.getCaretPosition());
+			} catch(Exception e) {
+
+			}
+		}
+
+		else if(ae.getSource() == menuItemSelectAll) {
+			try {
+				textArea.selectAll();
+			} catch(Exception e) {
+
+			}
+		}
 		else if(ae.getSource() == menuItemAbout) {
 			try {
 				String nameOS = System.getProperty("os.name");
 				String architectureOS = System.getProperty("os.arch");
 				String nativeEncoding = System.getProperty("native.encoding");
-				JOptionPane.showMessageDialog(this,"Text Editor write in JAVA inspired by Neon Genesis EVANGELION\nDeveloped by Kevo.THRASHER\nhttps://github.com/KevoTHRASHER\nOperating System: " + nameOS + "\nArchitecture SO: "+ architectureOS + "\nNative Encoding: " + nativeEncoding,"About JNotePad & Autor" ,JOptionPane.INFORMATION_MESSAGE,imageAboutAutor);
+				JOptionPane.showMessageDialog(this,"Simple Text Editor write in JAVA with Swing GUI\nInspired by Neon Genesis EVANGELION\nDeveloped by Kevo.THRASHER\nhttps://github.com/KevoTHRASHER\nOperating System: " + nameOS + "\nArchitecture SO: "+ architectureOS + "\nNative Encoding: " + nativeEncoding,"About JNotePad & Autor" ,JOptionPane.INFORMATION_MESSAGE,imageAboutAutor);
 			} catch(Exception e) {
 				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
