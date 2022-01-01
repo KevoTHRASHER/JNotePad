@@ -7,6 +7,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.ImageIcon;
 import javax.swing.KeyStroke;
 import java.awt.Color;
@@ -16,6 +17,8 @@ import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.File;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
 public class PanelJNotePad extends JPanel implements ActionListener {
 
@@ -162,19 +165,20 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 			}
 		}
 
-		if(ae.getSource() == menuItemOpen) {
-			JFileChooser objFileChooser = new JFileChooser();
-			objFileChooser.setCurrentDirectory(new File("."));
-			//objFileChooser.showOpenDialog(this);
-
-			int responseOpenDialog = objFileChooser.showOpenDialog(textArea);
+		else if(ae.getSource() == menuItemOpen) {
+			JFileChooser openJFileChooser = new JFileChooser();
+			openJFileChooser.setCurrentDirectory(new File("."));
+			openJFileChooser.setAcceptAllFileFilterUsed(false);
+			//FileNameExtensionFilter onlyTxtJavaFileNameExtensionFilter = new FileNameExtensionFilter("Only .txt & .java Files","txt java");
+			//openJFileChooser.addChoosableFileFilter(onlyTxtJavaFileNameExtensionFilter);
+			int responseOpenDialog = openJFileChooser.showOpenDialog(this);
 
 			try {
 				if(responseOpenDialog == JFileChooser.APPROVE_OPTION) {
-				System.out.println(JFileChooser.APPROVE_OPTION);
-				File objFile = new File(objFileChooser.getSelectedFile().getAbsolutePath());
-				System.out.println(objFile);
-				//String textFileToString = Files.readString(objFileChooser.getSelectedFile().getAbsolutePath());
+					File filenameFile = new File(openJFileChooser.getSelectedFile().getAbsolutePath());
+					BufferedReader reader = new BufferedReader(new FileReader(filenameFile));
+					//String textFileToString = Files.readString(openJFileChooser.getSelectedFile().getAbsolutePath());
+					textArea.read(reader, null);
 				}
 			} catch(Exception e) {
 				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
@@ -182,37 +186,47 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 
 		}
 
-		if(ae.getSource() == menuItemSave) {
-			JFileChooser objFileChooser = new JFileChooser();
-			objFileChooser.setCurrentDirectory(new File("."));
-			int responseSaveDialog = objFileChooser.showSaveDialog(textArea);
+		else if(ae.getSource() == menuItemSave) {
+			JFileChooser saveJFileChooser = new JFileChooser();
+			saveJFileChooser.setCurrentDirectory(new File("."));
+			int responseSaveDialog = saveJFileChooser.showSaveDialog(this);
 
 			try {
 				if(responseSaveDialog == JFileChooser.APPROVE_OPTION) {
-					File objFile = new File(objFileChooser.getSelectedFile().getAbsolutePath());
-					System.out.println(objFile);
+					File filenameFile = new File(saveJFileChooser.getSelectedFile().getAbsolutePath());
 				}
 
 			} catch(Exception e) {
-				JOptionPane.showMessageDialog(this,e,"EXCPTION",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
-		if(ae.getSource() == menuItemExit) {
+		else if(ae.getSource() == menuItemExit) {
 			try {
 				if (JOptionPane.showConfirmDialog(this,"Do you want to EXIT?","EXIT JNotePad",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
 				System.exit(0);
 				}
 			} catch(Exception e) {
-				JOptionPane.showMessageDialog(this,e,"EXCPTION",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
+			}
+		}
+		
+		else if(ae.getSource() == menuItemPrint) {
+			try {
+				textArea.print();
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
-		if(ae.getSource() == menuItemAbout) {
+		else if(ae.getSource() == menuItemAbout) {
 			try {
-				JOptionPane.showMessageDialog(this,"JNotePad Write in JAVA inspired by Neon Genesis EVANGELION\nDeveloped by Kevo.THRASHER\nhttps://github.com/KevoTHRASHER","About JNotePad & Autor",JOptionPane.INFORMATION_MESSAGE,imageAboutAutor);
+				String nameOS = System.getProperty("os.name");
+				String architectureOS = System.getProperty("os.arch");
+				String nativeEncoding = System.getProperty("native.encoding");
+				JOptionPane.showMessageDialog(this,"Text Editor write in JAVA inspired by Neon Genesis EVANGELION\nDeveloped by Kevo.THRASHER\nhttps://github.com/KevoTHRASHER\nOperating System: " + nameOS + "\nArchitecture SO: "+ architectureOS + "\nNative Encoding: " + nativeEncoding,"About JNotePad & Autor" ,JOptionPane.INFORMATION_MESSAGE,imageAboutAutor);
 			} catch(Exception e) {
-				JOptionPane.showMessageDialog(this,e,"EXCPTION",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
