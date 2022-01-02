@@ -18,7 +18,9 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 
 public class PanelJNotePad extends JPanel implements ActionListener {
 
@@ -162,7 +164,8 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 			try {
 				textArea.setText("");
 			} catch(Exception e) {
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(this,"Exception in MenuItem New check\n your Console o Terminal","EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
@@ -182,7 +185,8 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 					textArea.read(reader, null);
 				}
 			} catch(Exception e) {
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(this,"Exception in MenuItem Open check\n your Console o Terminal","EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 
 		}
@@ -195,10 +199,13 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 			try {
 				if(responseSaveDialog == JFileChooser.APPROVE_OPTION) {
 					File filenameFile = new File(saveJFileChooser.getSelectedFile().getAbsolutePath());
+					BufferedWriter newfiletosaveBufferedWriter = null;
+					newfiletosaveBufferedWriter = new BufferedWriter(new FileWriter(filenameFile));
+					textArea.write(newfiletosaveBufferedWriter);
 				}
-
 			} catch(Exception e) {
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(this,"Exception in MenuItem Save check\n your Console o Terminal","EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
@@ -208,7 +215,8 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 				System.exit(0);
 				}
 			} catch(Exception e) {
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(this,"Exception in MenuItem Exit check\n your Console o Terminal","EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 		
@@ -216,7 +224,8 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 			try {
 				textArea.print();
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(this,"Exception in MenuItem Print check\n your Console o Terminal","EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
@@ -225,7 +234,8 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 				selectText = textArea.getSelectedText();
 				textArea.replaceRange("", textArea.getSelectionStart(), textArea.getSelectionEnd());
 			} catch(Exception e) {
-
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(this,"Exception in MenuItem Cut check\n your Console o Terminal","EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
@@ -233,7 +243,8 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 			try {
 				selectText = textArea.getSelectedText();
 			} catch(Exception e) {
-
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(this,"Exception in MenuItem Copy check\n your Console o Terminal","EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
@@ -241,7 +252,8 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 			try {
 				textArea.insert(selectText, textArea.getCaretPosition());
 			} catch(Exception e) {
-
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(this,"Exception in MenuItem Paste check\n your Console o Terminal","EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
@@ -249,9 +261,11 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 			try {
 				textArea.selectAll();
 			} catch(Exception e) {
-
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(this,"Exception in MenuItem SelectAll check\n your Console o Terminal","EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
+
 		else if(ae.getSource() == menuItemAbout) {
 			try {
 				String nameOS = System.getProperty("os.name");
@@ -259,7 +273,8 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 				String nativeEncoding = System.getProperty("native.encoding");
 				JOptionPane.showMessageDialog(this,"Simple Text Editor write in JAVA with Swing GUI\nInspired by Neon Genesis EVANGELION\nDeveloped by Kevo.THRASHER\nhttps://github.com/KevoTHRASHER\nOperating System: " + nameOS + "\nArchitecture SO: "+ architectureOS + "\nNative Encoding: " + nativeEncoding,"About JNotePad & Autor" ,JOptionPane.INFORMATION_MESSAGE,imageAboutAutor);
 			} catch(Exception e) {
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(this,"Exception in MenuItem About check\n your Console o Terminal","EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
