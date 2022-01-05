@@ -144,7 +144,7 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 		textArea.setWrapStyleWord(true);
 
 		scrollPane = new JScrollPane(textArea);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setVisible(true);
 		scrollPane.setViewportView(textArea);
 		this.add(scrollPane,BorderLayout.CENTER);
@@ -152,7 +152,7 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 		this.setBackground(new Color(102,0,153));
 		this.setPreferredSize(new Dimension(420,540));
 		this.setMinimumSize(new Dimension(360,420));
-		this.setBounds(0,0,630,500);
+		this.setBounds(0,0,800,600);
 		this.setVisible(true);
 
 	}
@@ -199,8 +199,7 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 			try {
 				if(responseSaveDialog == JFileChooser.APPROVE_OPTION) {
 					File filenameFile = new File(saveJFileChooser.getSelectedFile().getAbsolutePath());
-					BufferedWriter newfiletosaveBufferedWriter = null;
-					newfiletosaveBufferedWriter = new BufferedWriter(new FileWriter(filenameFile));
+					BufferedWriter newfiletosaveBufferedWriter = new BufferedWriter(new FileWriter(filenameFile));
 					textArea.write(newfiletosaveBufferedWriter);
 				}
 			} catch(Exception e) {
@@ -219,7 +218,7 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 				JOptionPane.showMessageDialog(this,"Exception in MenuItem Exit check\n your Console o Terminal","EXCEPTION",JOptionPane.WARNING_MESSAGE);
 			}
 		}
-		
+
 		else if(ae.getSource() == menuItemPrint) {
 			try {
 				textArea.print();

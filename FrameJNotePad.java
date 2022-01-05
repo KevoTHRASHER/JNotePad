@@ -1,6 +1,8 @@
 import javax.swing.JFrame;
+import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.BorderLayout;
 
 public class FrameJNotePad extends JFrame {
 
@@ -8,20 +10,22 @@ public class FrameJNotePad extends JFrame {
 
 	public FrameJNotePad() {
 
-		this.setLayout(null);
+		this.setLayout(new BorderLayout());
 
 		objPanelJNotePad = new PanelJNotePad();
 
-		this.add(objPanelJNotePad);
-		this.getContentPane().setBackground(Color.BLACK);
-		this.setTitle("JNotePad");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//this.setMinimumSize(new Dimension(360,420));
+		add(objPanelJNotePad, BorderLayout.CENTER);
+		getContentPane().setBackground(Color.BLACK);
+		setTitle("JNotePad");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setMinimumSize(new Dimension(360,420));
 		//this.setPreferredSize(new Dimension(420,540));
-		this.setBounds(0,0,640,500);
-		this.setResizable(true);
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);
-		this.pack();
+		ImageIcon icon = new ImageIcon(getClass().getResource("img/eva-01.jpg"));
+		setIconImage(icon.getImage());
+		setBounds(0,0,800,600);
+		setResizable(true);
+		setLocationRelativeTo(null);
+		setVisible(true);
+		pack();
 	}
 }

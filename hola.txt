@@ -1,8 +1,0 @@
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
-				JOptionPane.showMessageDialog(this,e,"EXCEPTION",JOptionPane.WARNING_MESSAGE);
