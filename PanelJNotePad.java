@@ -34,12 +34,12 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 
 	public PanelJNotePad() {
 
-		this.setLayout(new BorderLayout());
+		setLayout(new BorderLayout());
 
 		menuBar = new JMenuBar();
 		menuBar.setBackground(new Color(102,0,153));
 		menuBar.setForeground(Color.GREEN);
-		this.add(menuBar, BorderLayout.NORTH);
+		add(menuBar, BorderLayout.NORTH);
 
 		menuFile = new JMenu("File");
 		menuFile.setForeground(Color.GREEN);
@@ -147,13 +147,12 @@ public class PanelJNotePad extends JPanel implements ActionListener {
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setVisible(true);
 		scrollPane.setViewportView(textArea);
-		this.add(scrollPane,BorderLayout.CENTER);
+		add(scrollPane,BorderLayout.CENTER);
 
-		this.setBackground(new Color(102,0,153));
-		this.setPreferredSize(new Dimension(420,540));
-		this.setMinimumSize(new Dimension(360,420));
-		this.setBounds(0,0,800,600);
-		this.setVisible(true);
+		setBackground(new Color(102,0,153));
+		setPreferredSize(new Dimension(800,600));
+		setBounds(0,0,800,600);
+		setVisible(true);
 
 	}
 
